@@ -1,0 +1,246 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Lorenz Attractor'
+  ClientHeight = 676
+  ClientWidth = 1020
+  Position = MainFormCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object SkPaintBox1: TSkPaintBox
+    Align = Client
+    HitTest = True
+    Size.Width = 1020.000000000000000000
+    Size.Height = 576.000000000000000000
+    Size.PlatformDefault = False
+    OnMouseDown = SkPaintBox1MouseDown
+    OnMouseMove = SkPaintBox1MouseMove
+    OnMouseUp = SkPaintBox1MouseUp
+    OnMouseWheel = SkPaintBox1MouseWheel
+    OnDraw = SkPaintBox1Draw
+  end
+  object Layout1: TLayout
+    Align = Top
+    Size.Width = 1020.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Label1: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Text = 'Lorenz Attractor'
+      TabOrder = 0
+    end
+    object cbMode: TComboBox
+      Items.Strings = (
+        '2D (X-Z)'
+        '3D (X-Y-Z)')
+      ItemIndex = 0
+      Position.X = 160.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      OnChange = cbModeChange
+    end
+    object chkAxes: TCheckBox
+      IsChecked = True
+      Position.X = 300.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'Show Axes'
+      OnChange = chkAxesChange
+    end
+    object chkPerspective: TCheckBox
+      Position.X = 420.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = 'Perspective'
+      OnChange = chkPerspectiveChange
+    end
+    object ColorComboBox1: TColorComboBox
+      DropDownKind = Custom
+      Color = claDeepskyblue
+      Anchors = [akTop, akRight]
+      DisableFocusEffect = False
+      ItemIndex = 41
+      Position.X = 680.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 145.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      OnChange = ColorComboBox1Change
+    end
+    object btnRun: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 831.000000000000000000
+      Position.Y = 14.000000000000000000
+      TabOrder = 2
+      Text = 'Run'
+      OnClick = btnRunClick
+    end
+    object btnStop: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 929.000000000000000000
+      Position.Y = 14.000000000000000000
+      TabOrder = 1
+      Text = 'Stop'
+      OnClick = btnStopClick
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 16
+    OnTimer = Timer1Timer
+    Left = 560
+    Top = 418
+  end
+  object Layout3: TLayout
+    Align = Left
+    Position.X = 0.000000000000000000
+    Position.Y = 50.000000000000000000
+    Size.Width = 200.000000000000000000
+    Size.Height = 576.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object lblSigmaTitle: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Size, FontColor, Other]
+      TextSettings.Font.Style = [fsBold]
+      Text = 'sigma (σ)'
+      TabOrder = 0
+    end
+    object lblSigmaValue: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 36.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 18.000000000000000000
+      Size.PlatformDefault = False
+      Text = '10.00'
+      TabOrder = 1
+    end
+    object tbSigma: TTrackBar
+      Position.X = 10.000000000000000000
+      Position.Y = 58.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Min = 0.000000000000000000
+      Max = 30.000000000000000000
+      Frequency = 0.100000000000000000
+      Value = 10.000000000000000000
+      TabOrder = 2
+      OnChange = tbParamChange
+      Tag = 1
+    end
+    object lblRhoTitle: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Size, FontColor, Other]
+      TextSettings.Font.Style = [fsBold]
+      Text = 'rho (ρ)'
+      TabOrder = 3
+    end
+    object lblRhoValue: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 126.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 18.000000000000000000
+      Size.PlatformDefault = False
+      Text = '28.00'
+      TabOrder = 4
+    end
+    object tbRho: TTrackBar
+      Position.X = 10.000000000000000000
+      Position.Y = 148.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Min = 0.000000000000000000
+      Max = 80.000000000000000000
+      Frequency = 0.100000000000000000
+      Value = 28.000000000000000000
+      TabOrder = 5
+      OnChange = tbParamChange
+      Tag = 2
+    end
+    object lblBetaTitle: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 194.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Size, FontColor, Other]
+      TextSettings.Font.Style = [fsBold]
+      Text = 'beta (β)'
+      TabOrder = 6
+    end
+    object lblBetaValue: TLabel
+      Position.X = 10.000000000000000000
+      Position.Y = 216.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 18.000000000000000000
+      Size.PlatformDefault = False
+      Text = '2.67'
+      TabOrder = 7
+    end
+    object tbBeta: TTrackBar
+      Position.X = 10.000000000000000000
+      Position.Y = 238.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Min = 0.000000000000000000
+      Max = 10.000000000000000000
+      Frequency = 0.010000000000000000
+      Value = 2.666666666666667000
+      TabOrder = 8
+      OnChange = tbParamChange
+      Tag = 3
+    end
+    object btnResetParams: TButton
+      Position.X = 10.000000000000000000
+      Position.Y = 290.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      Text = 'Reset Parameters'
+      OnClick = btnResetParamsClick
+    end
+  end
+  object Layout2: TLayout
+    Align = Bottom
+    Position.Y = 626.000000000000000000
+    Size.Width = 1020.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object lblZoom: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 200.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Zoom: 100%'
+      TabOrder = 0
+    end
+  end
+end
